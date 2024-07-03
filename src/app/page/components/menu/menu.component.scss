@@ -1,0 +1,38 @@
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.mat-card-item {
+  width: 18rem; /* Độ rộng của thẻ mat-card */
+  margin-bottom: 20px; /* Khoảng cách giữa các thẻ */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden; /* Đảm bảo nội dung không bị tràn ra ngoài */
+}
+
+.card-image {
+  height: 200px; /* Chiều cao cố định của hình ảnh */
+  width: 18rem; /* Đảm bảo hình ảnh chiếm toàn bộ chiều rộng thẻ */
+  object-fit: cover; /* Đảm bảo hình ảnh bao phủ hết phần tử mà không bị méo */
+}
+
+.mat-card-content {
+  flex-grow: 1; /* Để nội dung mat-card chiếm toàn bộ không gian còn lại */
+}
+
+.mat-card-title {
+  font-size: 1.25rem; /* Thiết lập kích thước tiêu đề */
+}
+
+.mat-card-subtitle {
+  font-size: 1rem; /* Thiết lập kích thước phụ đề */
+  margin-top: 10px; /* Khoảng cách trên phụ đề */
+}
+
+.mat-card-actions {
+  display: flex;
+  justify-content: flex-end; /* Căn chỉnh nút về phía cuối của thẻ */
+}

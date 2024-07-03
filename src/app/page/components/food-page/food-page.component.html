@@ -1,0 +1,30 @@
+<app-header></app-header>
+
+<div *ngIf="food?.ProductId" class="container">
+  <img [src]="food?.img" [alt]="food?.ProductName"/>
+  <div class="details">
+    <div class="header">
+      <span class="name">
+        {{food?.ProductName}}
+      </span>
+    </div>
+    <div class="tags">
+      <a routerLink="/tag/{{categoryName}}">
+        {{categoryName}}
+      </a>
+    </div>
+    <div class="price">
+      <span>
+        {{food?.ProductPrice | currency}}
+      </span>
+    </div>
+    <button (click)="addToCart()">
+      <mat-icon>add_shopping_cart</mat-icon>Thêm vào giỏ hàng
+    </button>
+  </div>
+</div>
+<button mat-icon-button (click)="goBack()">
+  <mat-icon>arrow_back</mat-icon>
+</button>
+
+<app-footer></app-footer>

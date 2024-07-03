@@ -1,0 +1,29 @@
+<app-header></app-header>
+<app-search></app-search>
+<app-category></app-category>
+<div class="card-container">
+  <mat-card *ngFor="let item of foods" class="mat-card-item">
+    <a routerLink="/food/{{item.ProductId}}">
+      <img mat-card-image [src]="item.img" alt="{{ item.ProductName }}">
+      <mat-card-content>
+        <mat-card-title>{{ item.ProductName }}</mat-card-title>
+        <mat-card-subtitle>{{ item.ProductId }} VND</mat-card-subtitle>
+      </mat-card-content>
+    </a>
+    <mat-card-actions>
+      <button mat-raised-button color="accent" (click)="addToCart(item.ProductId)">
+        <mat-icon>add_shopping_cart</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<div class="pagination">
+  <button (click)="prevPage()" [disabled]="currentPage === 1">Pre</button>
+  <span>Page {{ currentPage }} of {{ totalPages }}</span>
+  <button (click)="nextPage()" [disabled]="currentPage === totalPages">Next</button>
+</div>
+
+<app-footer></app-footer>
+
+  

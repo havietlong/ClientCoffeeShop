@@ -1,0 +1,7 @@
+<mat-toolbar color="primary">
+    <span>Quét mã QR</span>
+  </mat-toolbar>
+  <div class="content">
+    <zxing-scanner (scanSuccess)="handleQrCodeResult($event)"></zxing-scanner>
+  </div>
+  
