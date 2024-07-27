@@ -1,11 +1,11 @@
 <app-header></app-header>
 
-<div *ngIf="food?.ProductId" class="container">
-  <img [src]="food?.img" [alt]="food?.ProductName"/>
+<div *ngIf="food" class="container">
+  <img [src]="food.imageUrl" [alt]="food.productName"/>
   <div class="details">
     <div class="header">
       <span class="name">
-        {{food?.ProductName}}
+        {{food.productName}}
       </span>
     </div>
     <div class="tags">
@@ -15,10 +15,10 @@
     </div>
     <div class="price">
       <span>
-        {{food?.ProductPrice | currency}}
+        {{food.productPrice | currency}}
       </span>
     </div>
-    <button (click)="addToCart()">
+    <button (click)="addToCart(food)">
       <mat-icon>add_shopping_cart</mat-icon>Thêm vào giỏ hàng
     </button>
   </div>

@@ -1,17 +1,23 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class FoodService {
-  private apiBaseUrl = 'https://localhost:7103/api/products';
+  private apiBaseUrl = 'http://localhost:5265/api/products';
 
   constructor(private http: HttpClient) { }
 
   getAll() {
     return this.http.get<any[]>(`${this.apiBaseUrl}`);
+  }
+
+  getProductById(id: string): Observable<any> {
+    const url = `${this.apiBaseUrl}/${id}`;
+    return this.http.get<any>(url);
   }
 
   // getAllFoodsBySearchTerm(searchTerm: string) {

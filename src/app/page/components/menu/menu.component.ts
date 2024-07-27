@@ -19,47 +19,66 @@ import { MatIconModule } from '@angular/material/icon';
 
 
 @Component({
-    selector: 'app-menu',
-    standalone: true,
-    templateUrl: './menu.component.html',
-    styleUrls: ['./menu.component.scss'],
-    imports: [MatToolbarModule, MatCardModule, CommonModule, MatFormFieldModule, FormsModule, HeaderComponent, SearchComponent, CategoryComponent, RouterLink, FooterComponent, MatIconModule],
-    schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  selector: 'app-menu',
+  standalone: true,
+  templateUrl: './menu.component.html',
+  styleUrls: ['./menu.component.scss'],
+  imports: [MatToolbarModule, MatCardModule, CommonModule, MatFormFieldModule, FormsModule, HeaderComponent, SearchComponent, CategoryComponent, RouterLink, FooterComponent, MatIconModule],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class MenuComponent implements OnInit {
   foods: any;
   currentPage: number = 1;
-  pageSize: number = 4; 
+  pageSize: number = 4;
+  tableNum!: string;
 
   constructor(private route: ActivatedRoute, private router: Router,
     private foodService: FoodService, private cartService: CartService
   ) {
-    route.params.subscribe((params) => {
-      if (params['searchTerm']){
-        // this.foods = this.foodService.getAllFoodsBySearchTerm(params['searchTerm']);
-      }
-      else{
+    
         this.foods = foodService.getAll();
-      }
-    })
+      
+    }
+  
+
+  onSearch(searchData: any) {
+    console.log(searchData);
+    
+    if(searchData){
+      this.foods = searchData.data;
+    }
+    else {
+      this.foodService.getAll().subscribe(
+        (res: any) => {
+          if (res) {
+            console.log(res.data);
+            this.foods = res.data;
+          }
+        },
+      );
+    }
+
   }
 
   ngOnInit(): void {
+    this.tableNum = this.route.snapshot.paramMap.get('tableNum') || '';
+
     this.foodService.getAll().subscribe(
-      (res:any)=>{
-        if(res){
+      (res: any) => {
+        if (res) {
           console.log(res.data);
-          this.foods=res.data;
+          this.foods = res.data;
         }
       },
     );
   }
 
   addToCart(foodId: string) {
-    const selectedFood = this.foods.find((food: any) => food.ProductId === foodId);
+    console.log(foodId);
+    const selectedFood = this.foods.find((food: any) => food.productId === foodId);
     if (selectedFood) {
       this.cartService.addToCart(selectedFood);
-      this.router.navigateByUrl('/cart-page');
+      // this.router.navigateByUrl('/cart-page');
     } else {
       console.error(`Food with ID ${foodId} not found.`);
     }

@@ -19,35 +19,47 @@ import { FooterComponent } from '../../partials/footer/footer.component';
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class FoodPageComponent implements OnInit {
-  food?: Food;
+  food!: any;
   categoryName?: string;
-
+  id!: string;
+  tableNum!: string;
   constructor(
     private activatedRoute: ActivatedRoute,
     private foodService: FoodService,
     private cartService: CartService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {
-    activatedRoute.params.subscribe((params) => {
-      if (params['id']) {
-        // this.food = foodService.getFoodById(params['id']);
-        // if (this.food) {
-        //   this.categoryName = foodService.getCategoryNameById(this.food.CategoryId);
-        // } else {
-        //   console.error('Food not found!');
-        // }
-      }
-    });
+    
   }
+
+
 
   ngOnInit(): void {
-    console.log(this.food);
+    this.id = this.route.snapshot.paramMap.get('id') || '';
+    this.tableNum = this.route.snapshot.paramMap.get('tableNum') || '';
+    this.foodService.getProductById(this.id).subscribe(
+      res=>{
+        if(res){
+          this.food = res.data;
+          console.log(res);
+          
+        }
+      }
+    );
+    
+
+    if (this.food) {
+      this.categoryName = this.food.categoryName;
+    } else {
+      console.error('Food not found!');
+    }
   }
 
-  addToCart(): void {
+  addToCart(food:any): void {
     if (this.food) {
-      this.cartService.addToCart(this.food);
-      this.router.navigateByUrl('/cart-page');
+      this.cartService.addToCart(food);
+      this.router.navigateByUrl('/cart-page/'+this.tableNum);
     } else {
       console.error('No food item to add to cart!');
       // Optionally, show a message to the user
@@ -55,6 +67,7 @@ export class FoodPageComponent implements OnInit {
   }
 
   goBack(): void {
-    this.router.navigate(['/menu']); // Replace '/' with your desired back navigation route
+    this.router.navigate(['/menu/'+this.tableNum]); // Replace '/' with your desired back navigation route
   }
 }
+

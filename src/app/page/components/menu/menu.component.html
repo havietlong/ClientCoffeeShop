@@ -1,17 +1,17 @@
 <app-header></app-header>
-<app-search></app-search>
+<app-search (searchEmitter)="onSearch($event)" ></app-search>
 <app-category></app-category>
 <div class="card-container">
   <mat-card *ngFor="let item of foods" class="mat-card-item">
-    <a routerLink="/food/{{item.ProductId}}" class="card-link">
-      <img mat-card-image [src]="item.imageUrl" alt="{{ item.ProductName }}" class="card-image">
+    <a routerLink="/food/{{item.productId}}/{{tableNum}}" class="card-link">
+      <img mat-card-image [src]="item.imageUrl" alt="{{ item.productName }}" class="card-image">
       <mat-card-content>
         <mat-card-title>{{ item.productName }}</mat-card-title>
         <mat-card-subtitle>{{ item.productPrice }} VND</mat-card-subtitle>
       </mat-card-content>
     </a>
     <mat-card-actions>
-      <button mat-raised-button color="accent" class="add-to-cart-button" (click)="addToCart(item.ProductId)">
+      <button mat-raised-button color="accent" class="add-to-cart-button" (click)="addToCart(item.productId)">
         <mat-icon class="add-to-cart-icon">add_shopping_cart</mat-icon>
       </button>
     </mat-card-actions>

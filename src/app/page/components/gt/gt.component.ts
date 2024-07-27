@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-gt',
@@ -9,5 +9,14 @@ import { RouterLink } from '@angular/router';
   styleUrl: './gt.component.scss'
 })
 export class GtComponent {
+  tableNum!: string;
 
+  constructor(private route:ActivatedRoute){
+    
+  }
+
+  ngOnInit(){
+    this.tableNum = this.route.snapshot.paramMap.get('tableNum') || '';
+    console.log(this.tableNum);    
+  }
 }

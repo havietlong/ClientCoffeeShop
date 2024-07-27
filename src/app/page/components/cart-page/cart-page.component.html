@@ -1,3 +1,4 @@
+<!-- app.component.html -->
 <div class="cart-container">
   <div class="header">
     <h5>
@@ -8,15 +9,15 @@
     </h5>
   </div>
 
-  <div *ngIf="cart && cart.items.length" class="cart-items">
-    <div class="item" *ngFor="let cartItem of cart.items">
+  <div *ngIf="cart && cart.length" class="cart-items">
+    <div class="item" *ngFor="let cartItem of cart">      
       <div class="item-image">
-        <img [src]="cartItem.food.img" [alt]="cartItem.food.ProductName">
+        <img [src]="cartItem.imageUrl" [alt]="cartItem.productName">
       </div>
       <div class="item-details">
         <div class="item-name">
-          <a routerLink="/food/{{cartItem.food.ProductId}}">
-            {{cartItem.food.ProductName}}
+          <a [routerLink]="'/food/' + cartItem">
+            {{cartItem.productName}}
           </a>
         </div>
         <div class="item-quantity">
@@ -26,7 +27,7 @@
             min="1" />
         </div>
         <div class="item-price">
-          {{cartItem.price | currency}}
+          {{cartItem.productPrice | currency}}
         </div>
         <div class="item-remove">
           <button mat-icon-button (click)="removeFromCart(cartItem)">
@@ -39,10 +40,10 @@
 
   <div class="checkout">
     <div class="summary">
-      <div class="total-count">{{cart.totalCount}}</div>
-      <div class="total-price">{{cart.totalPrice | currency}}</div>
+      <div class="total-count">{{cartQuantity}}</div>
+      <!-- <div class="total-price">{{totalPrice | currency}}</div> -->
     </div>
-    <a routerLink="/order" class="order-button">Đặt</a>
+    <a routerLink="/order/{{tableNum}}" class="order-button">Đặt</a>
   </div>
 </div>
 

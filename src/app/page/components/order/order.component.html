@@ -30,41 +30,26 @@
 <div class="container">
   <h6>Sản phẩm</h6>
   <ul>
-    <li *ngFor="let cartItem of cart.items">
+    <li *ngFor="let cartItem of cart">
       <div class="item-image">
-        <img [src]="cartItem.food.img" [alt]="cartItem.food.ProductName">
+        <img [src]="cartItem.imageUrl" [alt]="cartItem.productName">
       </div>
       <div class="item-details">
-        <div class="item-name">{{cartItem.food.ProductName}}</div>
+        <div class="item-name">{{cartItem.productName}}</div>
         <div class="item-quantity">{{cartItem.quantity}}</div>
-        <div class="item-price">{{cartItem.price}}</div>
+        <div class="item-price">{{cartItem.totalPrice}}</div>
       </div>
     </li>
   </ul>
   <div class="checkout">
     <div class="summary">
-      <div class="foods-count">{{cart.totalCount}}</div>
-      <div class="total-price">{{cart.totalPrice}}</div>
+      <div class="foods-count">{{cartQuantity}}</div>
+      <div class="total-price">{{totalPrice}}</div>
     </div>
   </div>  
 </div>
 
-<div class="thanhtoan">
-  <h6>Phương thức thanh toán</h6>
-  <div class="payment-methods">
-    <div class="payment-method">
-      <input type="radio" id="cash" name="paymentMethod" value="cash" formControlName="paymentMethod">
-      <label for="cash"><i class="fas fa-money-bill-wave"></i> Tiền mặt</label>
-    </div>
-    <div class="payment-method">
-      <input type="radio" id="credit-card" name="paymentMethod" value="credit-card" formControlName="paymentMethod">
-      <label for="credit-card"><i class="fas fa-credit-card"></i> Thẻ tín dụng</label>
-    </div>
-    <div class="payment-method">
-      <input type="radio" id="online-banking" name="paymentMethod" value="online-banking" formControlName="paymentMethod">
-      <label for="online-banking"><i class="fas fa-university"></i> Ngân hàng trực tuyến</label>
-    </div>
-  </div>
+<div class="thanhtoan">  
   <button class="btn btn-primary" (click)="makePayment()">Thanh toán</button>
 </div>
 

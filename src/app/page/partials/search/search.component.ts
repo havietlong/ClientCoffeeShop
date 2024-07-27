@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
-
+import { SearchService } from '../../../services/search.service';
+import { EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-search',
   standalone: true,
@@ -10,8 +11,9 @@ import { MatIconModule } from '@angular/material/icon';
   styleUrl: './search.component.scss'
 })
 export class SearchComponent implements OnInit{
+  @Output() searchEmitter = new EventEmitter<any>();
   searchTerm = '';
-  constructor(activatedRoute:ActivatedRoute,private router:Router) {
+  constructor(activatedRoute:ActivatedRoute,private router:Router,private searchService:SearchService) {
     activatedRoute.params.subscribe((params) => {
       if(params['searchTerm']) this.searchTerm = params['searchTerm'];
     });
@@ -21,8 +23,18 @@ export class SearchComponent implements OnInit{
   }
 
   search(term:string):void{
-    if(term)
-    this.router.navigateByUrl('/search/'+ term);
+    if(term){
+      this.searchService.searchRecords('products','productName',term).subscribe(
+        res => {
+          if(res){
+            this.searchEmitter.emit(res)            
+          }
+        }
+      )
+    }else{
+      this.searchEmitter.emit(null) 
+    }
+    
   }
 
 }
