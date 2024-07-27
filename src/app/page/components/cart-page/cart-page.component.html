@@ -1,52 +1,49 @@
-<div class="header">
-  <h5>
-    <button mat-icon-button (click)="goBack()">
-      <mat-icon>arrow_back</mat-icon>
-    </button>Giỏ hàng<span>{{cartQuantity}}</span>
-  </h5>
-
-</div>
-
-<div *ngIf="cart && cart.items.length" class="container">
-<ul>
-  <li *ngFor="let cartItem of cart.items">
-    <div>
-      <img [src]="cartItem.food.img" [alt]="cartItem.food.ProductName">
-    </div>
-    <div>
-      <a routerLink="/food/{{cartItem.food.ProductId}}">
-        {{cartItem.food.ProductName}}
-      </a>
-    </div>
-    <div>
-      <select #quantitySelect
-      [value]="cartItem.quantity"
-      (change)="changeQuantity(cartItem, quantitySelect.value)">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </select>
-    </div>
-    <div>
-      {{cartItem.price | currency}}
-    </div>
-
-    <div>
-      <button class="remove-button" (click)="removeFromCart(cartItem)">
-        <mat-icon>delete</mat-icon>
+<div class="cart-container">
+  <div class="header">
+    <h5>
+      <button mat-icon-button (click)="goBack()">
+        <mat-icon>arrow_back</mat-icon>
       </button>
-    </div>
-  </li>
-</ul>
-<div class="checkout">
-  <div>
-    <div class="foods-count">{{cart.totalCount}}</div>
-    <div class="total-price">{{cart.totalPrice|currency}}</div>
+      Giỏ hàng <span>{{cartQuantity}}</span>
+    </h5>
   </div>
 
-  <a routerLink="/order">Đặt</a>
+  <div *ngIf="cart && cart.items.length" class="cart-items">
+    <div class="item" *ngFor="let cartItem of cart.items">
+      <div class="item-image">
+        <img [src]="cartItem.food.img" [alt]="cartItem.food.ProductName">
+      </div>
+      <div class="item-details">
+        <div class="item-name">
+          <a routerLink="/food/{{cartItem.food.ProductId}}">
+            {{cartItem.food.ProductName}}
+          </a>
+        </div>
+        <div class="item-quantity">
+          <input type="number" #quantitySelect
+            [value]="cartItem.quantity"
+            (change)="changeQuantity(cartItem, quantitySelect.value)"
+            min="1" />
+        </div>
+        <div class="item-price">
+          {{cartItem.price | currency}}
+        </div>
+        <div class="item-remove">
+          <button mat-icon-button (click)="removeFromCart(cartItem)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="checkout">
+    <div class="summary">
+      <div class="total-count">{{cart.totalCount}}</div>
+      <div class="total-price">{{cart.totalPrice | currency}}</div>
+    </div>
+    <a routerLink="/order" class="order-button">Đặt</a>
+  </div>
 </div>
-</div>
+
 <app-footer></app-footer>

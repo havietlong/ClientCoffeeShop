@@ -1,7 +1,8 @@
 <div class="header">
   <button mat-icon-button (click)="goBack()">
     <mat-icon>arrow_back</mat-icon>
-  </button>Thanh toán
+  </button>
+  Thanh toán
 </div>
 
 <div class="form">
@@ -15,38 +16,37 @@
       <input type="tel" formControlName="phone" id="phone" class="form-control">
     </div>
     <div class="form-group">
-      <label for="birthday">Ngày sinh:</label>
-      <input type="date" formControlName="birthday" id="birthday" class="form-control">
+      <div class="form-group">
+        <label for="birthday">Ngày tháng năm sinh:</label>
+        <input type="date" formControlName="birthday" id="birthday" class="form-control">
+      </div>
+      
+      
     </div>
+    
   </form>
-
 </div>
 
 <div class="container">
-
-    <h6>Sản phẩm</h6>
-    <ul>
-      <li *ngFor="let cartItem of cart.items">
-        <div>
-          <img [src]="cartItem.food.img" [alt]="cartItem.food.ProductName">
-        </div>
-        <div>
-          {{cartItem.food.ProductName}}
-        </div>
-        <div>
-          {{cartItem.quantity}}
-        </div>
-        <div>
-          {{cartItem.price }}
-        </div>
-      </li>
-    </ul>
-    <div class="checkout">
-      <div>
-        <div class="foods-count">{{cart.totalCount}}</div>
-        <div class="total-price">{{cart.totalPrice}}</div>
+  <h6>Sản phẩm</h6>
+  <ul>
+    <li *ngFor="let cartItem of cart.items">
+      <div class="item-image">
+        <img [src]="cartItem.food.img" [alt]="cartItem.food.ProductName">
       </div>
-    </div>  
+      <div class="item-details">
+        <div class="item-name">{{cartItem.food.ProductName}}</div>
+        <div class="item-quantity">{{cartItem.quantity}}</div>
+        <div class="item-price">{{cartItem.price}}</div>
+      </div>
+    </li>
+  </ul>
+  <div class="checkout">
+    <div class="summary">
+      <div class="foods-count">{{cart.totalCount}}</div>
+      <div class="total-price">{{cart.totalPrice}}</div>
+    </div>
+  </div>  
 </div>
 
 <div class="thanhtoan">
@@ -54,19 +54,19 @@
   <div class="payment-methods">
     <div class="payment-method">
       <input type="radio" id="cash" name="paymentMethod" value="cash" formControlName="paymentMethod">
-      <label for="cash">Tiền mặt</label>
+      <label for="cash"><i class="fas fa-money-bill-wave"></i> Tiền mặt</label>
     </div>
     <div class="payment-method">
       <input type="radio" id="credit-card" name="paymentMethod" value="credit-card" formControlName="paymentMethod">
-      <label for="credit-card">Thẻ tín dụng</label>
+      <label for="credit-card"><i class="fas fa-credit-card"></i> Thẻ tín dụng</label>
     </div>
     <div class="payment-method">
-      <input type="radio" id="online-banking" name="paymentMethod" value="online-banking"
-        formControlName="paymentMethod">
-      <label for="online-banking">Ngân hàng trực tuyến</label>
+      <input type="radio" id="online-banking" name="paymentMethod" value="online-banking" formControlName="paymentMethod">
+      <label for="online-banking"><i class="fas fa-university"></i> Ngân hàng trực tuyến</label>
     </div>
   </div>
   <button class="btn btn-primary" (click)="makePayment()">Thanh toán</button>
 </div>
+
 
 <app-footer></app-footer>

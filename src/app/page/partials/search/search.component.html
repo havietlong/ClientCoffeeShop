@@ -1,8 +1,8 @@
-<div>
-    <input #s type="text" placeholder=""
-     (keyup.enter)="search(s.value)"
-     [value]="searchTerm" />
-    <button (click)="search(s.value)">
-      <mat-icon>search</mat-icon>Tìm kiếm
-    </button>
-  </div>  
+<div class="search-container">
+  <input #s type="text" placeholder="Tìm kiếm..."
+    (keyup.enter)="search(s.value)"
+    [value]="searchTerm" />
+  <button (click)="search(s.value)">
+    <mat-icon>search</mat-icon>
+  </button>
+</div>

@@ -4,5 +4,6 @@ export class Food{
   ProductPrice!: number;
   img!: string;
   CategoryId!: number;
+  productPrice!: number;
   
 }

@@ -30,17 +30,18 @@ export class FoodPageComponent implements OnInit {
   ) {
     activatedRoute.params.subscribe((params) => {
       if (params['id']) {
-        this.food = foodService.getFoodById(params['id']);
-        if (this.food) {
-          this.categoryName = foodService.getCategoryNameById(this.food.CategoryId);
-        } else {
-          console.error('Food not found!');
-        }
+        // this.food = foodService.getFoodById(params['id']);
+        // if (this.food) {
+        //   this.categoryName = foodService.getCategoryNameById(this.food.CategoryId);
+        // } else {
+        //   console.error('Food not found!');
+        // }
       }
     });
   }
 
   ngOnInit(): void {
+    console.log(this.food);
   }
 
   addToCart(): void {

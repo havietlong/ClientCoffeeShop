@@ -1,3 +1,56 @@
 div{
     justify-content: center;  
 }
+/* Đặt màu nền và thay đổi chiều cao của navbar */
+.custom-navbar {
+    background-color: #4e342e; /* Màu nâu đậm */
+    padding: 15px 0; /* Khoảng cách trên và dưới */
+  }
+  
+  /* Thiết kế liên kết trong navbar */
+  .custom-nav-link {
+    font-size: 1rem; /* Kích thước chữ */
+    font-weight: 500; /* Độ dày chữ vừa phải */
+    color: #ffffff; /* Màu chữ sáng */
+    margin: 0 15px; /* Khoảng cách giữa các liên kết */
+    transition: color 0.3s ease, transform 0.3s ease; /* Hiệu ứng chuyển đổi */
+    text-align: center; /* Căn giữa text */
+  }
+  
+  /* Hiệu ứng hover cho liên kết */
+  .custom-nav-link:hover {
+    color: #80630d; /* Màu chữ khi hover */
+    transform: translateY(-2px); /* Hiệu ứng di chuyển lên khi hover */
+  }
+  
+  /* Liên kết đang active */
+  .custom-nav-link.active {
+    color: #b69b40; /* Màu chữ khi active */
+    font-weight: 700; /* Độ dày chữ khi active */
+  }
+  
+  /* Đặt khoảng cách giữa các phần tử trong navbar */
+  .navbar-nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Đặt khoảng cách cho container */
+  .container {
+    display: flex;
+    justify-content: center;
+  }
+  
+  /* Đặt khoảng cách cho hàng */
+  .row {
+    width: 100%;
+  }
+  
+  /* Đặt khoảng cách cho navbar trong chế độ collapse */
+  @media (max-width: 992px) {
+    .navbar-collapse {
+      justify-content: center;
+    }
+  }
+  

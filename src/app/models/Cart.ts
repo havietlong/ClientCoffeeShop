@@ -1,7 +1,8 @@
-import { CartItem } from "./CartItem";
+// models/Cart.ts
+import { CartItem } from './CartItem';
 
-export class Cart{
-  items:CartItem[] = [];
-  totalPrice:number = 0;
-  totalCount:number = 0;
+export class Cart {
+  items: CartItem[] = [];
+  totalCount: number = 0;
+  totalPrice: number = 0;
 }

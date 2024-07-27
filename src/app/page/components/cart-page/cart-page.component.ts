@@ -1,3 +1,4 @@
+// cart-page.component.ts
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CartService } from '../../../services/cart.service';
@@ -23,20 +24,20 @@ export class CartPageComponent implements OnInit {
   constructor(private cartService: CartService, private router: Router) {
     this.cartService.getCartObservable().subscribe((cart) => {
       this.cart = cart;
+      console.log(this.cart);
+      
     })
-    this.cartService.getCartObservable().subscribe((newCart) => {
-      this.cartQuantity = newCart.totalCount;
-    });
    }
 
   ngOnInit(): void {
+
   }
 
   removeFromCart(cartItem:CartItem){
     this.cartService.removeFromCart(cartItem.food.ProductId);
   }
 
-  changeQuantity(cartItem:CartItem,quantityInString:string){
+  changeQuantity(cartItem:CartItem, quantityInString:string){
     const quantity = parseInt(quantityInString);
     this.cartService.changeQuantity(cartItem.food.ProductId, quantity);
   }

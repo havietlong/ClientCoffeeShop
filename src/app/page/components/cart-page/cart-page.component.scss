@@ -1,123 +1,153 @@
-.container{
-  display: flex;
-  flex-wrap: wrap;
-  align-items: flex-start;
+/* Bố cục chính của giỏ hàng */
+.cart-container {
   margin: 1.5rem;
-  margin-top: 0.5rem;
-}
-
-ul{
-  display: flex;
-  flex-direction: column;
-  flex:3 0;
-  justify-content: space-evenly;
-  border: 1px solid #ffbbbb;
+  padding: 1rem;
+  border: 1px solid #ececec;
   border-radius: 1rem;
-  list-style: none;
-  margin: 0.5rem;
-  padding: 0;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-ul li{
+/* Header của giỏ hàng */
+.header {
   display: flex;
-  justify-content: space-around;
   align-items: center;
-  flex-wrap: wrap;
-  border-bottom: 1px solid #e4e4e4;
+  justify-content: space-between;
+  border-bottom: 1px solid #ececec;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
 }
 
-ul li:last-child{
+.header h5 {
+  font-size: 1.5rem;
+  color: #333333;
+}
+
+.header button {
+  background-color: transparent;
   border: none;
+  outline: none;
+  cursor: pointer;
 }
 
-li img{
-  width: 5rem;
-  height: 5rem;
-  border-radius: 100rem;
+.header button mat-icon {
+  font-size: 2rem;
+  color: #333333;
+}
+
+.header span {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #e72929; /* Màu đỏ */
+}
+
+/* Danh sách các sản phẩm trong giỏ hàng */
+.cart-items {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 0.5rem;
+}
+
+.item-image img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
   object-fit: cover;
 }
 
-li div{
-  padding: 1rem;
+.item-details {
+  flex: 1;
+  padding-left: 1rem;
 }
 
-li div:not(:first-child){
-  flex-basis: 18%;
+.item-name a {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333333;
+  text-decoration: none;
 }
 
-li select{
-  width: 3rem;
-  outline: none;
-  border: none;
-  border-bottom: 1px solid lightgrey;
-  font-size: 1.1rem;
-  font-weight: 100;
-}
-
-li .remove-button{
-  border-radius: 1rem;
-  border: none;
+.item-quantity input {
+  width: 4rem;
   padding: 0.5rem;
-  color: #e72929;
-  opacity: 0.7;
+  border: 1px solid #cccccc;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  text-align: center;
   outline: none;
 }
 
-li .remove-button:hover{
-  opacity: 1;
-  cursor: pointer;
+.item-price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333333;
 }
 
-.checkout{
+.item-remove {
+  margin-left: auto;
+}
+
+.item-remove button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.item-remove button:hover {
+  opacity: 1;
+}
+
+/* Tóm tắt đơn hàng và nút Đặt */
+.checkout {
+  margin-top: 2rem;
+  padding: 1rem;
   display: flex;
-  flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  flex:1 3;
-  height: 20rem;
-  border: 1px solid #ffbbbb;
+  background-color: #ffffff;
+  border: 1px solid #ececec;
   border-radius: 1rem;
-  padding: 0.5rem;
-  margin: 0.5rem;
 }
 
-.checkout>div{
-  font-size: 1.4rem;
-  margin: 1rem;
-  flex: 3;
+.summary {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: flex-start;
+  align-items: center;
+  justify-content: space-around;
 }
 
-.foods-count{
-  margin-bottom: 1.5rem;
+.total-count, .total-price {
+  font-size: 1.5rem;
+  color: #333333;
 }
 
-.foods-count::before{
-  content:"Count: ";
-  color: grey;
+.total-count::before, .total-price::before {
+  content: 'Tổng: ';
+  font-weight: bold;
+  color: #666666;
 }
 
-.total-price::before{
-  content: 'Price: ';
-  color: grey;
-}
-
-.checkout a{
-  padding: 1rem;
-  color: white;
-  background:#e72929;
-  display: block;
-  width: 99%;
-  border-radius: 1rem;
+.order-button {
+  padding: 1rem 2rem;
+  background-color: #e72929;
+  color: #ffffff;
+  font-size: 1.2rem;
+  font-weight: bold;
   text-align: center;
-  opacity: 0.7;
-  justify-self: center;
+  border-radius: 1rem;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
 }
 
-.checkout a:hover{
-  opacity: 1;
-  cursor: pointer;
+.order-button:hover {
+  background-color: #b71c1c;
 }

@@ -1,7 +1,8 @@
-import { Food } from "./Food";
+// models/CartItem.ts
+import { Food } from './Food';
 
-export class CartItem{
-  constructor(public food:Food){ }
-  quantity:number = 1 ;
-  price: number = this.food.ProductPrice;
+export class CartItem {
+  food!: Food;
+  quantity: number = 0;
+  price: number = 0; // Thêm thuộc tính price
 }

@@ -1,16 +1,118 @@
-header{
-    position: relative;
-    background: white;
-    padding: 0;
-    border-bottom: 1px solid #e72929;
-  }
-  
-  a{
-    color: #af1313;
-  }
-  
-  a.logo{
-    font-weight: bold;
-    padding: 1rem;
-  }
-  
+/* customer-guide.component.css */
+body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f7f7f7;
+  color: #4e342e;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: #6f4e37;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+}
+
+.logo img {
+  border-radius: 50%;
+  width: 100px;
+}
+
+.welcome-text h1 {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.welcome-text p {
+  margin: 0.5rem 0 0 0;
+  font-size: 1.1rem;
+}
+
+main {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+  color: #6f4e37;
+  margin-top: 0;
+}
+
+.order-section, .payment-section, .status-section, .support-section {
+  margin-bottom: 2rem;
+}
+
+.order-steps {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.step {
+  flex: 1 1 calc(25% - 1rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin: 1rem;
+}
+
+.step img {
+  width: 50px;
+  height: 50px;
+  margin-bottom: 1rem;
+}
+
+ol, ul {
+  padding-left: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+button-container {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+button {
+  background-color: #6f4e37;
+  color: white;
+  border: none;
+  padding: 1rem 2rem;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #5a3a2e;
+}
+
+a {
+  color: #6f4e37;
+  text-decoration: none;
+}
+
+a.logo img {
+  border-radius: 50%;
+}

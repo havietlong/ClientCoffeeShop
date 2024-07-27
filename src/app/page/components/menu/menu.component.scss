@@ -2,37 +2,114 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  gap: 20px; /* Khoảng cách giữa các thẻ */
+  margin-top: 20px;
+  padding: 0 10px;
 }
 
 .mat-card-item {
-  width: 18rem; /* Độ rộng của thẻ mat-card */
-  margin-bottom: 20px; /* Khoảng cách giữa các thẻ */
+  width: 18rem;
+  margin-bottom: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  overflow: hidden; /* Đảm bảo nội dung không bị tràn ra ngoài */
+  overflow: hidden;
+  border-radius: 12px; /* Bo góc mềm mại */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Đổ bóng nhẹ */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mat-card-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Hiệu ứng hover */
+}
+
+.card-link {
+  text-decoration: none; /* Loại bỏ gạch chân */
+  color: inherit; /* Giữ nguyên màu chữ */
 }
 
 .card-image {
-  height: 200px; /* Chiều cao cố định của hình ảnh */
-  width: 18rem; /* Đảm bảo hình ảnh chiếm toàn bộ chiều rộng thẻ */
-  object-fit: cover; /* Đảm bảo hình ảnh bao phủ hết phần tử mà không bị méo */
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
 }
 
 .mat-card-content {
-  flex-grow: 1; /* Để nội dung mat-card chiếm toàn bộ không gian còn lại */
+  flex-grow: 1;
+  padding: 16px;
 }
 
 .mat-card-title {
-  font-size: 1.25rem; /* Thiết lập kích thước tiêu đề */
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #3e2723; /* Coffee tone color */
 }
 
 .mat-card-subtitle {
-  font-size: 1rem; /* Thiết lập kích thước phụ đề */
-  margin-top: 10px; /* Khoảng cách trên phụ đề */
+  font-size: 1rem;
+  color: #6d4c41; /* Lighter coffee tone color */
+  margin-top: 10px;
 }
 
 .mat-card-actions {
   display: flex;
-  justify-content: flex-end; /* Căn chỉnh nút về phía cuối của thẻ */
+  justify-content: flex-end;
+  padding: 16px;
+}
+
+.add-to-cart-button {
+  background-color: #795548; /* Accent color */
+  color: #fff;
+  border-radius: 50%; /* Bo góc tròn */
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.add-to-cart-button:hover {
+  background-color: #5d4037; /* Màu khi hover */
+  transform: scale(1.1); /* Hiệu ứng phóng to khi hover */
+}
+
+.add-to-cart-icon {
+  font-size: 24px; /* Kích thước icon */
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.pagination button {
+  background-color: #795548;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  margin: 0 5px;
+  cursor: pointer;
+  border-radius: 8px; /* Bo góc nút */
+  transition: background-color 0.3s ease;
+}
+
+.pagination button:disabled {
+  background-color: #d7ccc8;
+  cursor: not-allowed;
+}
+
+.pagination span {
+  margin: 0 10px;
+  font-size: 1.1rem;
+  color: #3e2723;
+}
+
+.pagination button:not(:disabled):hover {
+  background-color: #5d4037;
 }

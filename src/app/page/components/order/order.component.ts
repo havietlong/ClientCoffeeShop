@@ -8,13 +8,20 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { MatIconModule } from '@angular/material/icon';
 import { FooterComponent } from "../../partials/footer/footer.component";
+// import {ChangeDetectionStrategy, Component} from '@angular/core';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {provideNativeDateAdapter} from '@angular/material/core';
+
 
 @Component({
     selector: 'app-order',
     standalone: true,
     templateUrl: './order.component.html',
     styleUrl: './order.component.scss',
-    imports: [ReactiveFormsModule, CommonModule, MatIconModule, FooterComponent]
+    imports: [ReactiveFormsModule, CommonModule, MatIconModule, FooterComponent,MatFormFieldModule, MatInputModule, MatDatepickerModule]
+    
 })
 export class OrderComponent implements OnInit {
   paymentForm!: FormGroup;

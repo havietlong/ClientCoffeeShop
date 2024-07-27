@@ -1,37 +1,57 @@
-div{
-    display: flex;
-    justify-content: center;
-    margin-top: 3rem;
-    margin-bottom: 1.5rem;
-  }
-  
-  input{
-    border-radius: 10rem 0 0 10rem;
-    border: none;
-    height: 10px;
-    width: 1000px;
-    background-color: #f1f1f1;
-    padding: 1.2rem;
-    font-size: 1rem;
-    font-weight: 5px;
-    outline: none;
-  }
-  
-  div button{
-    color: grey;
-    height: 38px;
-    width: 100px;
-    font-size: 1rem;
-    border-radius: 0 10rem 10rem 0;
-    border: none;
-    background-color: #e72929;
-    color: white;
-    opacity: 0.8;
-    outline: none;
-  }
-  
-  div button:hover{
-    opacity: 1;
-    cursor: pointer;
-  }
-  
+/* Container cho thanh tìm kiếm */
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+/* Thiết kế cho input */
+.search-container input {
+  border-radius: 25px 0 0 25px;
+  border: none;
+  height: 50px;
+  width: 600px;
+  background-color: #f1f1f1;
+  padding: 0 1.2rem;
+  font-size: 1rem;
+  font-weight: 400;
+  outline: none;
+  transition: background-color 0.3s ease;
+}
+
+.search-container input::placeholder {
+  color: #999; /* Màu chữ placeholder */
+}
+
+/* Thiết kế cho button */
+.search-container button {
+  height: 50px;
+  width: 60px;
+  font-size: 1rem;
+  border-radius: 0 25px 25px 0;
+  border: none;
+  background-color: #d32f2f; /* Màu đỏ đậm hơn */
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease, opacity 0.3s ease;
+  outline: none;
+}
+
+.search-container button mat-icon {
+  font-size: 24px; /* Kích thước icon */
+}
+
+.search-container button:hover {
+  background-color: #b71c1c; /* Màu đỏ khi hover */
+  cursor: pointer;
+  opacity: 1;
+}
+
+/* Hiệu ứng khi focus vào input */
+.search-container input:focus {
+  background-color: #e0e0e0;
+}
